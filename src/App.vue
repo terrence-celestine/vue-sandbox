@@ -1,7 +1,11 @@
 <script setup lang="ts">
-import UserList from './components/UserList.vue';
+import Dashboard from './components/Dashboard.vue';
+import UserInfo from './components/UserInfo.vue';
 </script>
 
 <template>
- <UserList/>
+  <div class="mx-auto max-w-6xl px-4 py-8">
+    <Dashboard/>
+    <UserInfo/>
+  </div>
 </template>
