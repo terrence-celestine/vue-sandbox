@@ -1,17 +1,9 @@
 <!-- Dashboard.vue — container that wraps UserInfo, SearchBook, and BookList -->
 <script setup lang="ts">
-import { provide, ref } from 'vue';
-import { currentUserKey, type CurrentUser } from '../composables/currentUser';
+import { ref } from 'vue';
 import BookList from './BookList.vue';
 import SearchBook from './SearchBook.vue';
 import UserInfo from './UserInfo.vue';
-
-// Provide the current user so descendants (UserInfo) can inject it
-const currentUser: CurrentUser = {
-    name: 'Terrence Celestine',
-    email: 'terrencebutler89@gmail.com',
-};
-provide(currentUserKey, currentUser);
 
 // Shared search state lifted up so SearchBook can filter BookList
 const search = ref('');

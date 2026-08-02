@@ -1,11 +1,15 @@
 <script setup lang="ts">
-import { computed, inject } from 'vue';
-import { currentUserKey } from '../composables/currentUser';
-const user = inject(currentUserKey);
+import { computed } from 'vue';
+
+import { storeToRefs } from 'pinia';
+import { useUserStore } from "../stores/user";
+
+const store = useUserStore();
+const {user} = storeToRefs(store);
 
 const initials = computed(() =>
-    user
-        ? user.name
+    user.value
+        ? user.value.name
               .split(' ')
               .map((part) => part[0])
               .filter(Boolean)
