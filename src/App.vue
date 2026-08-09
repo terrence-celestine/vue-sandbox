@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import Dashboard from './components/Dashboard.vue';
+import Tasks from './components/Tasks.vue';
 </script>
 
 <template>
   <div class="mx-auto max-w-6xl px-4 py-8">
-    <Dashboard/>
+    <Tasks/>
   </div>
 </template>
