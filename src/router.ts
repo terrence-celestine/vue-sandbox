@@ -13,6 +13,12 @@ declare module 'vue-router' {
 const routes: RouteRecordRaw[] = [
   { path: '/', redirect: '/tasks' },
   {
+    path: '/product-sort',
+    name: 'product sort',
+    component: () => import('./components/ProductSort.vue'),
+    meta: { nav: true, title: 'Product Sort', group: 'Apps' },
+  },
+  {
     path: '/tasks',
     name: 'tasks',
     component: () => import('./components/Tasks.vue'),
