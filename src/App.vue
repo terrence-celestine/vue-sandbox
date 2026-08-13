@@ -47,7 +47,7 @@ const groups = [
       @click="open = false"
     />
 
-    <div class="flex">
+    <div class="flex md:min-h-screen">
       <!-- Sidebar: fixed drawer on mobile, static column on desktop.
            Width collapses to an icon rail on desktop when `collapsed`. -->
       <aside
