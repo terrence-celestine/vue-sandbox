@@ -1,1 +1,14 @@
 @import 'tailwindcss';
+
+/* Design tokens. Each entry here emits a CSS variable (var(--color-field-border))
+   AND a matching Tailwind utility (border-field-border). Reference them either way. */
+@theme {
+  --color-field-bg: #ffffff;
+  --color-field-border: #d1d5db;      /* gray-300 */
+  --color-field-border-focus: #6366f1; /* indigo-500 */
+  --color-field-text: #111827;        /* gray-900 */
+  --color-field-placeholder: #9ca3af; /* gray-400 */
+  --color-field-ring: #c7d2fe;        /* indigo-200 */
+
+  --radius-field: 0.5rem;             /* rounded-field */
+}

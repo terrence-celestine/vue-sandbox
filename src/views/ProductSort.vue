@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 import type { Product, SortKey } from '../types/product';
+import DropDown from '../components/ui/dropDown.vue';
+import type { SelectOption } from '../types/select.ts';
 
 // ---- Seed data to render ----
 const PRODUCTS: Product[] = [
@@ -49,7 +51,14 @@ const PRODUCTS: Product[] = [
 ];
 
 const sortKey = ref<SortKey>('price-asc');
-    
+  
+const sortOptions: SelectOption<SortKey>[] = [
+  { value: 'price-asc',  label: 'Price: low to high' },
+  { value: 'price-desc', label: 'Price: high to low' },
+  { value: 'name-asc',   label: 'Name: A–Z' },
+  { value: 'name-desc',  label: 'Name: Z–A' },
+]
+
 // ---- The functions your component logic should implement ----
 const query = ref('')
 
@@ -114,16 +123,7 @@ const categoryClass = (cat: Product['category']): string => ({
             class="absolute right-2 top-1/2 -translate-y-1/2 rounded-md px-2.5 py-1 text-xs font-medium text-slate-500 transition hover:bg-slate-100 hover:text-slate-700"
           >Clear</button>
         </div>
-        <select
-          v-model="sortKey"
-          aria-label="Sort products"
-          class="rounded-lg border border-slate-300 bg-white py-2.5 px-3.5 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 sm:w-48"
-        >
-          <option value="price-asc">Price: low to high</option>
-          <option value="price-desc">Price: high to low</option>
-          <option value="name-asc">Name: A–Z</option>
-          <option value="name-desc">Name: Z–A</option>
-        </select>
+        <DropDown :options="sortOptions" v-model="sortKey"/>
       </div>
   
       <div v-if="visibleProducts.length === 0" class="rounded-xl border border-dashed border-slate-300 bg-white py-16 text-center">
