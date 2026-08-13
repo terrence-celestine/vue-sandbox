@@ -1,9 +1,9 @@
 <!-- Dashboard.vue — container that wraps UserInfo, SearchBook, and BookList -->
 <script setup lang="ts">
 import { ref } from 'vue';
-import BookList from './BookList.vue';
-import SearchBook from './SearchBook.vue';
-import UserInfo from './UserInfo.vue';
+import BookList from '../components/BookList.vue';
+import SearchBook from '../components/SearchBook.vue';
+import UserInfo from '../components/UserInfo.vue';
 
 // Shared search state lifted up so SearchBook can filter BookList
 const search = ref('');

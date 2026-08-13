@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import type { Product } from '../shared/interface';
-import type { SortKey } from '../shared/type';
+import type { Product, SortKey } from '../types/product';
 
 // ---- Seed data to render ----
 const PRODUCTS: Product[] = [

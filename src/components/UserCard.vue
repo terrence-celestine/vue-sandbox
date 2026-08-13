@@ -1,7 +1,7 @@
 <!-- UserCard.vue -->
 <script setup lang="ts">
 import { computed } from "vue";
-import type { User } from "../composables/useUsers";
+import type { User } from "../types/user";
 
 // Define the props this component expects to receive from the parent
 const props = defineProps<{ user: User }>()

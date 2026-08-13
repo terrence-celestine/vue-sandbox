@@ -1,10 +1,6 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
-
-export interface Task {
-    id: string;
-    task_title: string;
-}
+import type { Task } from "../types/task";
 
 export const useTaskStore = defineStore('tasks', () => {
     const tasks = ref<Task[]>([]);

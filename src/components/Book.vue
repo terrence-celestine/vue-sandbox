@@ -1,7 +1,7 @@
 <!-- Book.vue -->
 <script setup lang="ts">
 import { computed } from "vue";
-import type { Book } from "../composables/useBooks";
+import type { Book } from "../types/book";
 
 // Define the props this component expects to receive from the parent
 const props = defineProps<{ book: Book }>()

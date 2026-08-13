@@ -2,11 +2,7 @@
 
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-
-export interface CurrentUser {
-  name: string;
-  email: string;
-}
+import type { CurrentUser } from '../types/user'
 
 export const useUserStore = defineStore('currentUser', () => {
   // state — refs, exactly like a composable

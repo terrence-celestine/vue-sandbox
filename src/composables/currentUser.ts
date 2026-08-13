@@ -1,9 +1,4 @@
-
 import type { InjectionKey } from 'vue';
-
-export interface CurrentUser {
-    name: string;
-    email: string;
-}
+import type { CurrentUser } from '../types/user';
 
 export const currentUserKey: InjectionKey<CurrentUser> = Symbol('currentUser');

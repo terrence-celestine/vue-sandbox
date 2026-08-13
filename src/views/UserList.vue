@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from 'vue';
 import { useUsers } from '../composables/useUsers';
-import UserCard from './UserCard.vue';
+import UserCard from '../components/UserCard.vue';
 
 const {users, loading, error, fetchUsers, cancel} = useUsers();
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, useTemplateRef } from "vue";
-import TaskList from "./TaskList.vue";
+import TaskList from "../components/TaskList.vue";
 import { useTaskStore } from "../stores/tasks.ts";
 import { storeToRefs } from 'pinia';
 const newTask = ref('');

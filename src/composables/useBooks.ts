@@ -1,15 +1,5 @@
 import { ref } from "vue";
-
-export interface Book {
-    id: number;
-    title: string;
-    author: string;
-    rating: number;
-    ratingsCount: number;
-    published: number;
-    description: string;
-    coverColor: string;
-}
+import type { Book } from "../types/book";
 
 const mockBooks: Book[] = [
     {
