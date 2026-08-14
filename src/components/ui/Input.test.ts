@@ -31,8 +31,8 @@ describe('Input', () => {
     const button = wrapper.get('button')
     // Label comes from the prop, not a hard-coded string.
     expect(button.text()).toBe('Search')
-    // ...and it is the shared Button primitive, not a bare element.
-    expect(button.classes()).toContain('bg-violet-50')
+    // ...and it is the shared Button primitive (base styling), not a bare element.
+    expect(button.classes()).toContain('rounded-md')
   })
 
   it('renders no button when no label is provided', () => {

@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 import Button from './Button.vue'
 import Badge from './Badge.vue'
@@ -10,28 +10,30 @@ import Badge from './Badge.vue'
 describe('Button', () => {
   it('renders slotted label text', () => {
     const wrapper = mount(Button, {
-      props: { type: 'Default', fontSize: 'md' },
       slots: { default: 'Save changes' },
     })
     expect(wrapper.text()).toBe('Save changes')
   })
 
-  it('applies the violet palette for the Default type', () => {
-    const wrapper = mount(Button, {
-      props: { type: 'Default', fontSize: 'md' },
-      slots: { default: 'x' },
-    })
-    expect(wrapper.classes()).toContain('bg-violet-50')
-    expect(wrapper.classes()).toContain('text-violet-700')
+  it('renders a native button with type="button"', () => {
+    const wrapper = mount(Button, { slots: { default: 'x' } })
+    expect(wrapper.get('button').attributes('type')).toBe('button')
   })
 
-  it('applies the blue palette for the Alert type', () => {
+  it.each([
+    ['default', 'bg-field-bg'],
+    ['primary', 'bg-violet-50'],
+    ['secondary', 'bg-slate-50'],
+    ['success', 'bg-emerald-50'],
+    ['danger', 'bg-red-50'],
+    ['warning', 'bg-amber-50'],
+    ['alert', 'bg-blue-50'],
+  ] as const)('applies the "%s" variant palette (%s)', (variant, expected) => {
     const wrapper = mount(Button, {
-      props: { type: 'Alert', fontSize: 'md' },
+      props: { variant },
       slots: { default: 'x' },
     })
-    expect(wrapper.classes()).toContain('bg-blue-50')
-    expect(wrapper.classes()).toContain('text-blue-700')
+    expect(wrapper.classes()).toContain(expected)
   })
 
   it.each([
@@ -40,19 +42,20 @@ describe('Button', () => {
     ['lg', 'text-lg'],
   ] as const)('maps fontSize "%s" to the "%s" class', (fontSize, expected) => {
     const wrapper = mount(Button, {
-      props: { type: 'Default', fontSize },
+      props: { fontSize },
       slots: { default: 'x' },
     })
     expect(wrapper.classes()).toContain(expected)
   })
 
-  it('emits a click event when pressed', async () => {
+  it('calls a click handler exactly once (guards against double-fire)', async () => {
+    const onClick = vi.fn()
     const wrapper = mount(Button, {
-      props: { type: 'Default', fontSize: 'md' },
+      attrs: { onClick },
       slots: { default: 'x' },
     })
     await wrapper.trigger('click')
-    expect(wrapper.emitted('click')).toHaveLength(1)
+    expect(onClick).toHaveBeenCalledTimes(1)
   })
 })
 
