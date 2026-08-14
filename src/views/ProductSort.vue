@@ -1,57 +1,13 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 import type { Product, SortKey } from '../types/product';
-import DropDown from '../components/ui/dropDown.vue';
+import SelectDropDown from '../components/ui/SelectDropDown.vue';
 import type { SelectOption } from '../types/select.ts';
 import NoProducts from '../components/NoProducts.vue';
 import ProductCards from '../components/ProductCards.vue';
 import ProductSearch from '../components/ProductSearch.vue';
 import Button from '../components/ui/Button.vue';
-// ---- Seed data to render ----
-const PRODUCTS: Product[] = [
-    {
-        id: "1",
-        name: "sony walk-man",
-        category: 'audio',
-        price: 49.99,
-        inStock: true
-    },
-    {
-        id: "2",
-        name: "ipod",
-        category: 'audio',
-        price: 29.99,
-        inStock: true
-    },
-    {
-        id: "3",
-        name: "watch",
-        category: 'wearable',
-        price: 9.99,
-        inStock: true
-    },
-    {
-        id: "4",
-        name: "bracelet",
-        category: 'wearable',
-        price: 109.99,
-        inStock: true
-    },
-    {
-        id: "5",
-        name: "speakers",
-        category: 'audio',
-        price: 69.99,
-        inStock: true
-    },
-    {
-        id: "6",
-        name: "jeans",
-        category: 'wearable',
-        price: 19.99,
-        inStock: false
-    }
-];
+import { PRODUCTS } from "../mocks/products.ts"
 
 const sortKey = ref<SortKey>('price-asc');
   
@@ -111,7 +67,7 @@ const clearQuery = () => {
             <Button v-if="query.length" @click="clearQuery" >Clear Query</Button>
           </div>
         </div>
-        <DropDown :options="sortOptions" v-model="sortKey"/>
+        <SelectDropDown :options="sortOptions" v-model="sortKey"/>
       </div>
       <NoProducts v-if="visibleProducts.length === 0" :query="query"/>
       <ProductCards v-else :products="visibleProducts"/>

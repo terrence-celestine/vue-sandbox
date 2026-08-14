@@ -2,6 +2,7 @@
 import { onMounted, onUnmounted, ref } from 'vue';
 import { useUsers } from '../composables/useUsers';
 import UserCard from '../components/UserCard.vue';
+import Button from '../components/ui/Button.vue';
 
 const {users, loading, error, fetchUsers, cancel} = useUsers();
 
@@ -19,13 +20,11 @@ onUnmounted(cancel)
 </style>
 
 <template>
+    <Button @click="toggleList">toggle list</Button>
     <div v-if="loading">Page is loading...</div>
     <div v-else-if="error">An error occured: {{ error }}</div>
     <div v-else-if="users.length === 0">No users found</div>
     <div v-else-if="isVisible" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         <UserCard v-for="user in users" :key="user.id" :user="user"/>
     </div>
-    <button @click="toggleList">
-        toggle list
-    </button>
 </template>
