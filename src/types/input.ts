@@ -1,7 +1,7 @@
 export interface TextInput {
     placeholder?: string;
-    text: string;
-    ariaLabel: string;
+    ariaLabel?: string;
     button?: string;
-    name: string;
+    name?: string;
+    modelValue: string;
 }
