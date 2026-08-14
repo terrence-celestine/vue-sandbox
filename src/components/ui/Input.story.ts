@@ -4,7 +4,6 @@ import type { TextInput } from '../../types/input'
 
 const base: TextInput = {
   placeholder: 'Type something here',
-  text: '',
   ariaLabel: 'Search field',
   name: 'text',
 }
