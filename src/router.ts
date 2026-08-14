@@ -5,7 +5,7 @@ import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 //   /component/:slug -> a single reusable component in isolation (ComponentHost)
 // Both resolve their :slug via src/registry.ts. Add a demo there, not here.
 const routes: RouteRecordRaw[] = [
-  { path: '/', redirect: '/apps/tasks' },
+  { path: '/', redirect: '/apps/hello' },
   {
     path: '/apps/:slug',
     name: 'app',

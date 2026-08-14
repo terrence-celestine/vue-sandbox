@@ -6,6 +6,7 @@ const base: TextInput = {
   placeholder: 'Type something here',
   ariaLabel: 'Search field',
   name: 'text',
+  modelValue: '',
 }
 
 const story: ComponentStory = {

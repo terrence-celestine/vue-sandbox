@@ -9,6 +9,8 @@ import type { Component } from 'vue'
 export interface Variant {
   name: string
   props?: Record<string, unknown>
+  /** Slot name → text. Use `default` for the unnamed slot. */
+  slots?: Record<string, string>,
 }
 
 export interface ComponentStory {

@@ -14,7 +14,6 @@ const view = computed(() =>
 
 <template>
   <div v-if="entry && view">
-    <h1 class="mb-6 text-2xl font-bold text-gray-900">{{ entry.title }}</h1>
     <component :is="view" />
   </div>
   <div v-else class="rounded-lg border border-dashed border-gray-300 py-16 text-center">

@@ -21,11 +21,6 @@ const activeVariant = computed(() => variants.value[activeIndex.value])
 
 <template>
   <div v-if="entry && view">
-    <div class="mb-6">
-      <p class="text-xs font-semibold uppercase tracking-wider text-gray-400">Component</p>
-      <h1 class="text-2xl font-bold text-gray-900">{{ entry.title }}</h1>
-    </div>
-
     <!-- Variant switcher: only shown when the story defines more than one -->
     <div v-if="variants.length > 1" class="mb-6 flex flex-wrap gap-2">
       <button
@@ -44,7 +39,15 @@ const activeVariant = computed(() => variants.value[activeIndex.value])
 
     <!-- Isolation frame: the active variant rendered alone on a neutral canvas -->
     <div>
-      <component :is="view" v-bind="activeVariant?.props" />
+      <component :is="view" v-bind="activeVariant?.props">
+        <template
+          v-for="(content, name) in (activeVariant?.slots ?? {})"
+          :key="name"
+          #[name]
+        >
+          {{ content }}
+        </template>
+      </component>
     </div>
   </div>
   <div v-else class="rounded-lg border border-dashed border-gray-300 py-16 text-center">
