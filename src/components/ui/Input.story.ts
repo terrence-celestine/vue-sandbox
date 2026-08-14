@@ -3,7 +3,6 @@ import type { ComponentStory } from '../../types/story'
 import type { TextInput } from '../../types/input'
 
 const base: TextInput = {
-  placeholder: 'Type something here',
   ariaLabel: 'Search field',
   name: 'text',
   modelValue: '',
@@ -15,8 +14,9 @@ const story: ComponentStory = {
   component: () => import('./Input.vue'),
   variants: [
     { name: 'Default', props: { text: base } },
+    { name: 'Placeholder', props: { text: { ...base, placeholder: "Type some text here..." } } },
     { name: 'With button', props: { text: { ...base, button: 'Click me' } } },
-    { name: 'No placeholder', props: { text: { ...base, placeholder: undefined } } },
+    { name: 'No placeholder', props: { text: { ...base } } },
   ],
 }
 
