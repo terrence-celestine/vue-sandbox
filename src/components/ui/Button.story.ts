@@ -8,13 +8,33 @@ const story: ComponentStory = {
     variants: [
         {
             name: 'Default',
-            slots: { default: 'Click me' },
-            props: { type: 'Default' },
+            slots: { default: 'Default Button' },
+            props: { variant: 'default' },
         },
         {
-            name: 'Alert',
+            name: 'Alert Button',
+            slots: { default: 'Alert Button' },
+            props: { variant: 'alert' },
+        },
+        {
+            name: 'Primary Button',
+            slots: { default: 'Primary Button' },
+            props: { variant: 'primary' },
+        },
+        {
+            name: 'Secondary Button',
+            slots: { default: 'Secondary Button' },
+            props: { variant: 'secondary' },
+        },
+        {
+            name: 'Success Button',
+            slots: { default: 'Secondary Button' },
+            props: { variant: 'success' },
+        },
+        {
+            name: 'On Click Event',
             slots: { default: 'Click me' },
-            props: { type: 'Alert', onClick: () => alert('hello'), fontSize: "md" },
+            props: { variant: 'danger', onClick: () => console.log("hello world"), fontSize: "md" },
         },
     ],
 }
